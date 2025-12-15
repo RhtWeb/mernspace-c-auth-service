@@ -1,0 +1,13 @@
+{
+  "name": "mernspace-c-auth-service",
+  "version": "1.0.0",
+  "description": "Auth Service",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node src/server.js"
+  },
+  "keywords": ["auth"],
+  "author": "RhtWeb",
+  "license": "ISC",
+  "packageManager": "pnpm@10.25.0"
+}
