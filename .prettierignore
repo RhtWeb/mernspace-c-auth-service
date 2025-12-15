@@ -1,0 +1,11 @@
+# Ignore artifacts:
+dist
+node_modules/
+coverage
+.nvmrc
+.prettierrc
+.prettierignore
+package.json
+pnpm-lock.yaml
+tsconfig.json
+.gitignore

@@ -4,7 +4,9 @@
   "description": "Auth Service",
   "main": "index.js",
   "scripts": {
-    "dev": "tsc"
+    "dev": "tsc",
+    "format:fix": "prettier . --write",
+    "format:check": "prettier . --check"
   },
   "keywords": [
     "auth"
@@ -14,6 +16,7 @@
   "packageManager": "pnpm@10.25.0",
   "devDependencies": {
     "@types/node": "^25.0.2",
+    "prettier": "3.7.4",
     "typescript": "^5.9.3"
   }
 }
