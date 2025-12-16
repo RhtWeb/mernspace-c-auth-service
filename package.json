@@ -9,7 +9,8 @@
     "format:fix": "prettier . --write",
     "format:check": "prettier . --check",
     "lint:fix": "eslint . --fix",
-    "lint:check": "eslint ."
+    "lint:check": "eslint .",
+    "prepare": "husky"
   },
   "keywords": [
     "auth"
@@ -21,8 +22,16 @@
     "@eslint/js": "^9.39.2",
     "@types/node": "^25.0.2",
     "eslint": "^9.39.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "prettier": "3.7.4",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.50.0"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "pnpm lint:fix",
+      "pnpm format:fix"
+    ]
   }
 }

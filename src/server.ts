@@ -1,5 +1,11 @@
 function welcome(name: string) {
-  console.log("welcome" + name);
+  const user = {
+    firstname: "Rohit",
+  };
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+  const fname = user[firstname];
+
+  console.log("welcome" + name + fname);
 }
 
 welcome("Rohit");
