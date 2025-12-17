@@ -8,8 +8,8 @@
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
     "module": "nodenext", //nodenext
-    "target": "es2022", //esnext
     "moduleResolution": "nodenext",
+    "target": "es2022", //esnext
     // "types": [],
     // For nodejs:
     "lib": ["es2022"], //esnext
@@ -35,14 +35,14 @@
 
     // Recommended Options
     "strict": true,
-    "jsx": "react-jsx",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    // "jsx": "react-jsx",
     "verbatimModuleSyntax": true,
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
-    "moduleDetection": "force",
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true
+    "moduleDetection": "force"
   },
   "include": ["src/**/*.ts"]
   // "include": ["src/**/*"],

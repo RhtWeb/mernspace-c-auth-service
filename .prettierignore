@@ -2,11 +2,14 @@
 dist
 node_modules/
 coverage
+.env*
 .nvmrc
 .prettierrc
 .prettierignore
 package.json
 pnpm-lock.yaml
+pnpm-workspace.yaml
+pnpm*
 tsconfig.json
 .gitignore
 eslint.config.mjs
