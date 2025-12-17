@@ -13,3 +13,4 @@ pnpm*
 tsconfig.json
 .gitignore
 eslint.config.mjs
+logs/
