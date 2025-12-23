@@ -20,6 +20,13 @@ export default defineConfig(
     rules: {
       "dot-notation": "error",
       "no-console": "warn",
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+        },
+      ],
     },
   },
 );
