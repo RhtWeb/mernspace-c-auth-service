@@ -13,7 +13,7 @@
     // "types": [],
     // For nodejs:
     "lib": ["es2022"], //esnext
-    "types": ["node"],
+    "types": ["node", "vitest/globals"],
     // and npm install -D @types/node
 
     // Other Outputs
@@ -42,9 +42,15 @@
     "verbatimModuleSyntax": true,
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
-    "moduleDetection": "force"
+    "moduleDetection": "force",
+    "resolveJsonModule": true
   },
-  "include": ["src/**/*.ts"]
-  // "include": ["src/**/*"],
+  // "include": ["src", "tests"]
   // "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules",
+    "dist",
+    "tests",
+    "vitest.config.ts"
+  ]
 }
