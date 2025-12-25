@@ -62,7 +62,10 @@ git remote add origin git@github.com:<username>/<reponame>.git #[ssh | http]
 git branch -M main
 git push -u origin main # [we add upstream so that we dont have to add remote again]
 git remote -v
-git checkout -b <branch>
+git checkout -b <branch> # naming convension lowercase with hypens(-)
+git push origin <branch>
+# OR
+git push -u origin <branch> # -u to Set upstream tracking
 ```
 
 ---
