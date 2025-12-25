@@ -25,8 +25,8 @@
 
 ```bash
 git --version #Check if Git is already installed
-git clone https://github.com/your-org/express-ts-starter.git my-new-service #This creates a new folder with the repo name
-cd my-new-service #Move into the project directory
+git clone https://github.com/your-org/mernspace-c-auth-service.git express-auth-service #This creates a new folder with the repo name
+cd express-auth-service #Move into the project directory
 rm -rf .git
 git init
 ```
@@ -123,13 +123,16 @@ pnpm add -D @types/node #[xyz.d.ts  type defination files in node]
 pnpm tsc --init  #[create tsconfig file]
 ```
 
-> ✅ **Use `tsx` for development**  
->  tsx watch src/server.ts
-> ✅ **Use `tsc + node` for production**
-> tsc --watch & node --watch dist/server.js
-> ❌ **Never run `.ts` directly with Node**
-
 ```text
+ ✅ **Use `tsx` for development**
+  tsx watch src/server.ts
+
+ ✅ **Use `tsc + node` for production**
+ tsc --watch & node --watch dist/server.js
+
+ ❌ **Never run `.ts` directly with Node**
+
+
 NOTE:- You can use biomejs for linting and formatting
 ```
 
@@ -262,8 +265,9 @@ touch health.test.ts
 
 ```bash
 git remote -v
-git remote add template git@github.com:<username>/express-init-template.git
+git remote add template git@github.com:<username>/express-ts-starter-template.git
 git push template main
+git remote remove template # to remove remote
 ```
 
 ###### Make the Repo a **GitHub Template**
