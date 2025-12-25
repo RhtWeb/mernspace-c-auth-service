@@ -1,4 +1,4 @@
-## Checklist for the express project initial setup
+### Checklist for the express project initial setup
 
 - [ ] Git SetUp.
 - [ ] NVM SetUp.
@@ -13,6 +13,36 @@
 - [ ] Error handling setup
 - [ ] Tests SetUp
 - [ ] Create Template
+
+---
+
+## Repo starter template SetUP
+
+- install nodejs, pnpm, git, bash terminal, typescript, nvm
+- < > Code button > copy the URL > Open your terminal
+
+###### If this repo is a starter template:
+
+```bash
+git --version #Check if Git is already installed
+git clone https://github.com/your-org/express-ts-starter.git my-new-service #This creates a new folder with the repo name
+cd my-new-service #Move into the project directory
+rm -rf .git
+git init
+```
+
+`This gives you a clean Git history for each microservice.`
+
+###### Run the setUp
+
+```bash
+nvm use
+pnpm install # Install dependencies
+cp .env.example .env # Edit .env as needed
+pnpm run dev # Check package.json
+```
+
+---
 
 ---
 
@@ -235,5 +265,13 @@ git remote -v
 git remote add template git@github.com:<username>/express-init-template.git
 git push template main
 ```
+
+###### Make the Repo a **GitHub Template**
+
+On GitHub:
+
+1. Go to repo **Settings**
+2. Enable **“Template repository”**
+3. Save
 
 ---
