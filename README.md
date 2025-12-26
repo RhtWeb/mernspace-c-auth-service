@@ -12,6 +12,7 @@
 - [ ] Logger setup
 - [ ] Error handling setup
 - [ ] Tests SetUp
+- [ ] Dockerization
 - [ ] Create Template
 
 ---
@@ -260,6 +261,43 @@ pnpm add -D @vitest/coverage-v8
 mkdir test
 cd test
 touch health.test.ts
+```
+
+---
+
+#### Dockerization
+
+```bash
+# Folder Structure
+mkdir -p docker/dev && touch docker/dev/Dockerfile
+# -p Don’t error if they already exist
+touch .dockerignore
+
+# Build the docker image
+docker -version
+docker build -t auth-service:dev -f docker/dev/Dockerfile .
+docker image ls
+
+# run the container
+# only on local dev env
+MSYS_NO_PATHCONV=1 docker run --rm -it \
+  -v "$(pwd -W):/usr/src/app" \
+  -v /usr/src/app/node_modules \
+  --env-file "$(pwd -W)/.env" \
+  -p 5501:5501 \
+  -e NODE_ENV=development \
+  -e CHOKIDAR_USEPOLLING=true \
+  -e CHOKIDAR_INTERVAL=300 \
+  auth-service:dev
+# OR
+docker run --rm -it \
+  -v "$(pwd):/usr/src/app" \
+  -v /usr/src/app/node_modules \
+  --env-file "$(pwd)/.env" \
+  -p 5501:5501 \
+  -e NODE_ENV=development \
+  auth-service:dev
+
 ```
 
 ---

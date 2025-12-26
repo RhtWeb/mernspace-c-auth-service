@@ -1,5 +1,7 @@
 node_modules/
 dist
+build
+coverage
 
 .env
 .env.*
@@ -7,3 +9,4 @@ dist
 !.env.example
 
 logs/
+*.log
