@@ -1,0 +1,16 @@
+node_modules/
+.pnpm-store
+dist
+build
+coverage
+.esbuild
+*.tsbuildinfo
+.env
+.env.*
+.git
+.vscode
+.idea
+# Dockerfile
+# docker/
+*.log
+logs/
