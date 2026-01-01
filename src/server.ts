@@ -1,12 +1,12 @@
 import app from "./app.js";
 import { Config } from "./config/index.js";
 import logger from "./config/logger.js";
-import { dbHealthCheck } from "./db/db.healthcheck.js";
+// import { dbHealthCheck } from "./db/db.healthcheck.js";
 
-const startServer = async () => {
+const startServer = () => {
   const PORT = Config.PORT;
-  await dbHealthCheck();
-  console.log("✅ Database connected");
+  // await dbHealthCheck();
+  // console.log("✅ Database connected");
   try {
     app.listen(PORT, () => {
       logger.info(`Listening on port ${PORT} on container`);
@@ -17,4 +17,4 @@ const startServer = async () => {
   }
 };
 
-await startServer();
+startServer();

@@ -15,7 +15,9 @@
     "test:integration": "vitest tests/integration",
     "test:watch": "vitest --watch",
     "test:coverage": "vitest run --coverage",
-    "prepare": "husky"
+    "prepare": "husky",
+    "db:generate": "pnpm tsx node_modules/drizzle-kit/bin.cjs generate",
+    "db:migrate": "pnpm tsx node_modules/drizzle-kit/bin.cjs migrate"
   },
   "keywords": [
     "auth"

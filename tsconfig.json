@@ -1,6 +1,12 @@
 {
   // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
+
+    // "baseUrl": ".",
+    // "paths": {
+    //   "@src/*": ["src/*"],
+    //   "@tests/*": ["tests/*"]
+    // },
     // File Layout
     "rootDir": "./src",
     "outDir": "./dist",
@@ -51,6 +57,7 @@
     "node_modules",
     "dist",
     "tests",
-    "vitest.config.ts"
+    "vitest.config.ts",
+    "drizzle.config.ts",
   ]
 }
