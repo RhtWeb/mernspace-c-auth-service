@@ -1,16 +1,17 @@
-import type { AuthRepository } from "../repositories/AuthRepository.js";
-import type { UserData } from "../types/index.js";
+import type { registerDto } from "../dto/register.dto.js";
+import type { UserRepository } from "../repositories/UserRepository.js";
 
 export class AuthService {
-  constructor(private authRepository: AuthRepository) {}
+  constructor(private userRepository: UserRepository) {}
 
   createUser = async ({
     firstName,
     lastName,
     email,
-    passwordHash,
-  }: UserData) => {
-    const user = await this.authRepository.insertUser({
+    password,
+  }: registerDto) => {
+    const passwordHash = password;
+    const user = await this.userRepository.insertUser({
       firstName,
       lastName,
       email,

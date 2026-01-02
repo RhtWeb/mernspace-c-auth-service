@@ -12,7 +12,7 @@ describe("POST auth/register", () => {
         firstName: "Rohit",
         lastName: "Singh",
         email: "rhtweb@gmail.com",
-        passwordHash: "sdfsdrgsf",
+        password: "sdfsdrgsf",
       };
 
       const res = await request(app).post("/auth/register").send(userData);
@@ -25,7 +25,7 @@ describe("POST auth/register", () => {
         firstName: "Rohit",
         lastName: "Singh",
         email: "rhtweb@gmail.com",
-        passwordHash: "sdfsdrgsf",
+        password: "sdfsdrgsf",
       };
 
       await request(app).post("/auth/register").send(userData);
@@ -40,7 +40,7 @@ describe("POST auth/register", () => {
         firstName: "Rohit",
         lastName: "Singh",
         email: "rhtweb@gmail.com",
-        passwordHash: "sdfsdrgsf",
+        password: "sdfsdrgsf",
       };
 
       const res = await request(app).post("/auth/register").send(userData);

@@ -23,6 +23,9 @@ importers:
       winston:
         specifier: ^3.19.0
         version: 3.19.0
+      zod:
+        specifier: ^4.3.4
+        version: 4.3.4
     devDependencies:
       '@eslint/js':
         specifier: ^9.39.2
@@ -2165,6 +2168,9 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
 
+  zod@4.3.4:
+    resolution: {integrity: sha512-Zw/uYiiyF6pUT1qmKbZziChgNPRu+ZRneAsMUDU6IwmXdWt5JwcUfy2bvLOCUtz5UniaN/Zx5aFttZYbYc7O/A==}
+
 snapshots:
 
   '@babel/helper-string-parser@7.27.1': {}
@@ -4036,3 +4042,5 @@ snapshots:
   yaml@2.8.2: {}
 
   yocto-queue@0.1.0: {}
+
+  zod@4.3.4: {}

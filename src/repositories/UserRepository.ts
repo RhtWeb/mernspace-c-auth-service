@@ -1,17 +1,17 @@
-import { db } from "../db/index.js";
+import type { DbClient } from "../db/index.js";
 import { users } from "../db/schema.js";
-import type { UserData } from "../types/index.js";
+import type { NewUser } from "../types/index.js";
 
-export class AuthRepository {
-  constructor() {}
+export class UserRepository {
+  constructor(private db: DbClient) {}
 
   insertUser = async ({
     firstName,
     lastName,
     email,
     passwordHash,
-  }: UserData) => {
-    const [user] = await db
+  }: NewUser) => {
+    const [user] = await this.db
       .insert(users)
       .values({ firstName, lastName, email, passwordHash })
       .returning({

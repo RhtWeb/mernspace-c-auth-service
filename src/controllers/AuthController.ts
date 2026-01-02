@@ -1,18 +1,20 @@
-import type { Response } from "express";
+import type { Request, Response } from "express";
 import type { AuthService } from "../services/AuthService.js";
-import type { RegisterRequest } from "../types/index.js";
+import { RegisterDtoSchema } from "../dto/register.dto.js";
 
 export class AuthController {
   constructor(private authService: AuthService) {}
 
-  register = async (req: RegisterRequest, res: Response) => {
-    // res.status(201).send("dfd");
-    const { firstName, lastName, email, passwordHash } = req.body;
+  register = async (req: Request, res: Response) => {
+    const { firstName, lastName, email, password } = RegisterDtoSchema.parse(
+      req.body,
+    );
+
     const user = await this.authService.createUser({
       firstName,
       lastName,
       email,
-      passwordHash,
+      password,
     });
 
     // res.status(201).json({ id: user.id })

@@ -8,24 +8,19 @@
     "dev": "dotenv -e .env.development -- tsx watch src/server.ts",
     "start": "tsc --watch & node --watch dist/server.js",
     "@comment:start": "dotenv -e .env.production -- tsc --watch & node --watch dist/server.js",
-    
     "format:fix": "prettier . --write",
     "format:check": "prettier . --check",
     "lint:fix": "eslint . --fix",
     "lint:check": "eslint .",
-
     "test": "dotenv -e .env.test -- vitest",
     "test:integration": "dotenv -e .env.test -- vitest tests/integration",
     "test:watch": "dotenv -e .env.test -- vitest --watch",
     "test:coverage": "dotenv -e .env.test -- vitest run --coverage",
-
     "prepare": "husky",
-
     "db:generate": "pnpm tsx node_modules/drizzle-kit/bin.cjs generate",
     "db:migrate": "pnpm tsx node_modules/drizzle-kit/bin.cjs migrate",
-    
     "db:generate:test": "dotenv -e .env.test -- pnpm tsx node_modules/drizzle-kit/bin.cjs generate",
-    "db:migrate:test":  "dotenv -e .env.test -- pnpm tsx node_modules/drizzle-kit/bin.cjs migrate"
+    "db:migrate:test": "dotenv -e .env.test -- pnpm tsx node_modules/drizzle-kit/bin.cjs migrate"
   },
   "keywords": [
     "auth"
@@ -63,6 +58,7 @@
     "drizzle-orm": "^0.45.1",
     "express": "^5.2.1",
     "pg": "^8.16.3",
-    "winston": "^3.19.0"
+    "winston": "^3.19.0",
+    "zod": "^4.3.4"
   }
 }
