@@ -58,6 +58,7 @@
     "dist",
     "tests",
     "vitest.config.ts",
+    "vitest.workspace.ts",
     "drizzle.config.ts",
   ]
 }
