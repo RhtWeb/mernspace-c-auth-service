@@ -1,15 +1,16 @@
-import type { Request, Response } from "express";
+import type { NextFunction, Request, Response } from "express";
 import type { AuthService } from "../services/AuthService.js";
 import { RegisterDtoSchema } from "../dto/register.dto.js";
 import jwt, { type JwtPayload } from "jsonwebtoken";
 import fs from "node:fs";
 import path from "node:path";
 import { AppError } from "../errors/AppError.js";
+import { Config } from "../config/index.js";
 
 export class AuthController {
   constructor(private authService: AuthService) {}
 
-  register = async (req: Request, res: Response) => {
+  register = async (req: Request, res: Response, next: NextFunction) => {
     const { firstName, lastName, email, password, role } =
       RegisterDtoSchema.parse(req.body);
 
@@ -21,12 +22,6 @@ export class AuthController {
       role,
     });
 
-    const payload: JwtPayload = {
-      sub: user?.id,
-      role: user?.role,
-      // tenent: user.tenent,
-    };
-
     let privateKey: Buffer;
 
     try {
@@ -37,12 +32,24 @@ export class AuthController {
       // Fix: Read the certificate once when the server starts and store it in a variable, OR use the asynchronous fs.promises.readFile().
     } catch {
       // console.error(err);
-      throw new AppError({ statusCode: 500, message: "cannot read file" });
+      const err = new AppError({
+        statusCode: 500,
+        message: "cannot read file",
+      });
+      next(err);
+      return;
     }
+
+    const payload: JwtPayload = {
+      sub: user?.id,
+      role: user?.role,
+      // tenent: user.tenent,
+    };
 
     const accessToken = jwt.sign(payload, privateKey, {
       algorithm: "RS256",
       expiresIn: "1h",
+      issuer: "auth-service",
     });
 
     res.cookie("accessToken", accessToken, {
@@ -53,7 +60,13 @@ export class AuthController {
       // secure: true
     });
 
-    res.cookie("refreshToken", "ddfdsds", {
+    const refreshToken = jwt.sign(payload, Config.REFRESH_TOKEN_SECRET, {
+      algorithm: "HS256",
+      expiresIn: "1h",
+      issuer: "auth-service",
+    });
+
+    res.cookie("refreshToken", refreshToken, {
       maxAge: 1000 * 60 * 60 * 24 * 365, // 1yr
       httpOnly: true,
       domain: "localhost",

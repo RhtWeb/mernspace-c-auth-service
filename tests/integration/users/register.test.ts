@@ -114,7 +114,7 @@ describe("POST auth/register", () => {
       expect(refreshToken).not.toBeNull();
 
       expect(isJWT(accessToken)).toBeTruthy();
-      // expect(isJWT(refreshToken)).toBeTruthy();
+      expect(isJWT(refreshToken)).toBeTruthy();
     });
   });
 });

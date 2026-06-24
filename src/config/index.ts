@@ -1,7 +1,7 @@
 import { config } from "dotenv";
 config();
 
-const { PORT, NODE_ENV } = process.env;
+const { PORT, NODE_ENV, REFRESH_TOKEN_SECRET } = process.env;
 
 function required(name: string): string {
   const value = process.env[name];
@@ -15,6 +15,7 @@ export const Config = {
   PORT: Number(PORT ?? 3000),
   NODE_ENV: NODE_ENV ?? "development",
   DATABASE_URL: required("DATABASE_URL"),
+  REFRESH_TOKEN_SECRET: REFRESH_TOKEN_SECRET ?? "jhgjf",
 } as const;
 
 // import path from "node:path";
