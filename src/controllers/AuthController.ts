@@ -6,15 +6,15 @@ export class AuthController {
   constructor(private authService: AuthService) {}
 
   register = async (req: Request, res: Response) => {
-    const { firstName, lastName, email, password } = RegisterDtoSchema.parse(
-      req.body,
-    );
+    const { firstName, lastName, email, password, role } =
+      RegisterDtoSchema.parse(req.body);
 
     const user = await this.authService.createUser({
       firstName,
       lastName,
       email,
       password,
+      role,
     });
 
     // res.status(201).json({ id: user.id })

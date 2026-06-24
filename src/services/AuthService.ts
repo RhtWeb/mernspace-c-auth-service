@@ -9,6 +9,7 @@ export class AuthService {
     lastName,
     email,
     password,
+    role,
   }: registerDto) => {
     const passwordHash = password;
     const user = await this.userRepository.insertUser({
@@ -16,6 +17,7 @@ export class AuthService {
       lastName,
       email,
       passwordHash,
+      role,
     });
 
     return user;

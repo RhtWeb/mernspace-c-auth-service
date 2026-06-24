@@ -10,15 +10,17 @@ export class UserRepository {
     lastName,
     email,
     passwordHash,
+    role,
   }: NewUser) => {
     const [user] = await this.db
       .insert(users)
-      .values({ firstName, lastName, email, passwordHash })
+      .values({ firstName, lastName, email, passwordHash, role })
       .returning({
         id: users.id,
         firstName: users.firstName,
         lastName: users.lastName,
         email: users.email,
+        role: users.role,
         createdAt: users.createdAt,
       });
 

@@ -32,7 +32,7 @@ export const users = pgTable(
 
     passwordHash: text("password_hash").notNull(),
 
-    role: roleEnum("role").notNull().default(Role.CUSTOMER),
+    role: roleEnum("role").notNull(),
 
     createdAt: timestamp("created_at", { withTimezone: true })
       .defaultNow()

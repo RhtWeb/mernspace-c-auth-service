@@ -4,6 +4,7 @@ import request from "supertest";
 import app from "../../../src/app.js";
 import { db } from "../../../src/db/index.js";
 import { users } from "../../../src/db/schema.js";
+import { Role } from "../../../src/constants/index.js";
 
 describe("POST auth/register", () => {
   describe("when input is invalid", () => {
@@ -13,11 +14,28 @@ describe("POST auth/register", () => {
         lastName: "Singh",
         email: "rhtweb@gmail.com",
         password: "sdfsdrgsf",
+        role: Role.CUSTOMER,
       };
 
       const res = await request(app).post("/auth/register").send(userData);
 
       expect(res.statusCode).toBe(201);
+    });
+
+    it("should return a json object", async () => {
+      const userData = {
+        firstName: "Rohit",
+        lastName: "Singh",
+        email: "rhtweb@gmail.com",
+        password: "sdfsdrgsf",
+        role: Role.CUSTOMER,
+      };
+
+      const res = await request(app).post("/auth/register").send(userData);
+
+      expect(res.body).not.toBeNull();
+      expect(res.body).toBeTypeOf("object");
+      expect(res.type).toBe("application/json");
     });
 
     it("should persist user in the db", async () => {
@@ -26,6 +44,7 @@ describe("POST auth/register", () => {
         lastName: "Singh",
         email: "rhtweb@gmail.com",
         password: "sdfsdrgsf",
+        role: Role.CUSTOMER,
       };
 
       await request(app).post("/auth/register").send(userData);
@@ -41,11 +60,27 @@ describe("POST auth/register", () => {
         lastName: "Singh",
         email: "rhtweb@gmail.com",
         password: "sdfsdrgsf",
+        role: Role.CUSTOMER,
       };
 
       const res = await request(app).post("/auth/register").send(userData);
 
       expect(res.body).toHaveProperty("id");
+    });
+
+    it("should have role as customer only", async () => {
+      const userData = {
+        firstName: "Rohit",
+        lastName: "Singh",
+        email: "rhtweb@gmail.com",
+        password: "sdfsdrgsf",
+        role: Role.CUSTOMER,
+      };
+
+      const res = await request(app).post("/auth/register").send(userData);
+
+      expect(res.body).toHaveProperty("role");
+      expect(res.body).toMatchObject({ role: Role.CUSTOMER });
     });
   });
 });

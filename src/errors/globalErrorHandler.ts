@@ -12,27 +12,29 @@ export const globalErrorHandler = (
     err instanceof AppError
       ? err
       : new AppError({
-          code: "INTERNAL_ERROR",
+          // code: "INTERNAL_ERROR",
           message: "Unexpected error",
           statusCode: 500,
-          category: "INTERNAL",
-          retryable: false,
+          // category: "INTERNAL",
+          // retryable: false,
           cause: err,
         });
 
-  logger.error(error.message);
+  logger.error(err);
+  logger.error(error);
+  // logger.error(error.message);
 
-  if (error.category === "INTERNAL") {
-    logger.error(error.cause);
-  }
+  // if (error.category === "INTERNAL") {
+  //   logger.error(error.cause);
+  // }
 
   res.status(error.statusCode).json({
     error: {
       id: error.id,
-      code: error.code,
+      // code: error.code,
       message: error.message,
-      category: error.category,
-      retryable: error.retryable,
+      // category: error.category,
+      // retryable: error.retryable,
     },
   });
 };
