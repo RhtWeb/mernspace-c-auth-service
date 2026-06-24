@@ -7,7 +7,7 @@ export default defineConfig(
   eslint.configs.recommended,
   tseslint.configs.recommendedTypeChecked,
   {
-    ignores: ["dist", "node_modules"],
+    ignores: ["dist", "node_modules", "coverage"],
   },
   {
     languageOptions: {

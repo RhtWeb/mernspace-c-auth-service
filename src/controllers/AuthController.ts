@@ -17,6 +17,22 @@ export class AuthController {
       role,
     });
 
+    res.cookie("accessToken", "ddfdsds", {
+      maxAge: 1000 * 60 * 60, // 1hr
+      httpOnly: true,
+      domain: "localhost",
+      sameSite: true,
+      // secure: true
+    });
+
+    res.cookie("refreshToken", "ddfdsds", {
+      maxAge: 1000 * 60 * 60 * 24 * 365, // 1yr
+      httpOnly: true,
+      domain: "localhost",
+      sameSite: true,
+      // secure: true
+    });
+
     // res.status(201).json({ id: user.id })
     res.status(201).json(user);
   };
