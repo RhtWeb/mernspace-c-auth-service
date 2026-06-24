@@ -84,7 +84,6 @@ describe("POST auth/register", () => {
       expect(res.body).toMatchObject({ role: Role.CUSTOMER });
     });
 
-    it.todo("should return the access token and refresh token in cookie");
     it("should return the access token and refresh token in cookie", async () => {
       const userData = {
         firstName: "Rohit",
@@ -115,7 +114,7 @@ describe("POST auth/register", () => {
       expect(refreshToken).not.toBeNull();
 
       expect(isJWT(accessToken)).toBeTruthy();
-      expect(isJWT(accessToken)).toBeTruthy();
+      // expect(isJWT(refreshToken)).toBeTruthy();
     });
   });
 });
