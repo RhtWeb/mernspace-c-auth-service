@@ -3,9 +3,10 @@ import { describe, expect, it } from "vitest";
 import request from "supertest";
 import app from "../../../src/app.js";
 import { db } from "../../../src/db/index.js";
-import { users } from "../../../src/db/schema.js";
+import { refreshTokens, users } from "../../../src/db/schema.js";
 import { Role } from "../../../src/constants/index.js";
 import { isJWT } from "../utils/index.js";
+import { RegisterResponseSchema } from "../../../src/dto/register.dto.js";
 
 describe("POST auth/register", () => {
   describe("when input is invalid", () => {
@@ -115,6 +116,29 @@ describe("POST auth/register", () => {
 
       expect(isJWT(accessToken)).toBeTruthy();
       expect(isJWT(refreshToken)).toBeTruthy();
+    });
+
+    it("should presist the refresh token", async () => {
+      const userData = {
+        firstName: "Rohit",
+        lastName: "Singh",
+        email: "rhtweb@gmail.com",
+        password: "sdfsdrgsf",
+        role: Role.CUSTOMER,
+      };
+
+      const res = await request(app).post("/auth/register").send(userData);
+
+      // Parse and validate!
+      const user = RegisterResponseSchema.parse(res.body);
+
+      const rtres = await db.select().from(refreshTokens);
+
+      expect(rtres).toHaveLength(1);
+
+      // res.body === rtres[0].userId
+
+      expect(rtres[0].userId).toBe(user.id);
     });
   });
 });

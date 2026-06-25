@@ -44,3 +44,25 @@ export const users = pgTable(
   },
   (table) => [index("users_email_idx").on(table.email)],
 );
+
+export const refreshTokens = pgTable("refresh_tokens", {
+  id: uuid("id")
+    .default(sql`gen_random_uuid()`)
+    .primaryKey(),
+
+  expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
+
+  userId: uuid("user_id")
+    .notNull()
+    .references(() => users.id),
+
+  replacedById: uuid("replaced_by_id"),
+
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .defaultNow()
+    .notNull(),
+
+  updatedAt: timestamp("updated_at", { withTimezone: true })
+    .defaultNow()
+    .notNull(),
+});
