@@ -6,4 +6,5 @@ export type ErrorCategory =
   | "CONFLICT"
   | "RATE_LIMIT"
   | "INFRA"
+  | "UNAUTHORIZED"
   | "INTERNAL";

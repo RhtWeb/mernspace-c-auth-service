@@ -136,8 +136,6 @@ describe("POST auth/register", () => {
 
       expect(rtres).toHaveLength(1);
 
-      // res.body === rtres[0].userId
-
       expect(rtres[0].userId).toBe(user.id);
     });
   });

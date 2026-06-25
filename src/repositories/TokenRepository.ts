@@ -1,15 +1,14 @@
 import type { DbClient } from "../db/index.js";
 import { refreshTokens } from "../db/schema.js";
+import type { persistRefreshTokenDto } from "../dto/token.dto.js";
 
-type NewRT = {
-  expiresAt: Date;
-  userId: string;
-};
-
-export class RefreshTokenRepository {
+export class TokenRepository {
   constructor(private db: DbClient) {}
 
-  insertRefreshToken = async ({ expiresAt, userId }: NewRT) => {
+  insertRefreshToken = async ({
+    expiresAt,
+    userId,
+  }: persistRefreshTokenDto) => {
     const [refreshToken] = await this.db
       .insert(refreshTokens)
       .values({

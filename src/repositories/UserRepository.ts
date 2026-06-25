@@ -28,3 +28,11 @@ export class UserRepository {
     return user;
   };
 }
+
+// Let's review the mental model we established for the Repository layer:
+//     The Data Guardian 🛡️: This layer deals strictly with the database.
+//     It attempts an operation and either succeeds or throws a raw database error.
+//     It should never know about HTTP status codes or Express concepts.
+
+// Option 1: No catch block. If it fails, Drizzle throws the raw error automatically!
+// Option 2: If you MUST use a try...catch (e.g., for specific DB metric logging)
